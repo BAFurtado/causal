@@ -1,4 +1,7 @@
+import os
 import pandas as pd
+
+print(os.getcwd())
 
 
 def prob_given_treatment(data, treatment, outcome):
@@ -24,8 +27,16 @@ if __name__ == '__main__':
     # prob_given_treatment(df, 'A', 'Y')
     # prob_given_treatment(df, 'A', 'Y')
 
-    df2 = pd.read_csv('table2.2.csv', sep=';')
-    # Causal risk ratio Pr[Ya=1 = 1]/Pr[Ya=0 = 1]
-    weighted(df2, 'L')
+    # df2 = pd.read_csv('table2.2.csv', sep=';')
+    # # Causal risk ratio Pr[Ya=1 = 1]/Pr[Ya=0 = 1]
+    # weighted(df2, 'L')
+    df22 = pd.read_csv('table2.2.csv', sep=';')
+    df22['V'] = 1
+    df44 = pd.read_csv('table4.2.csv', sep=';')
+    df44['V'] = 0
+
+    df40 = pd.concat([df22, df44])
+    prob_given_treatment(df40, 'A', 'Y')
+
 
 
